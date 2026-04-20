@@ -2,11 +2,23 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .pytest_cache/
+.benchmarks/
 .ipynb_checkpoints/
 build/
 dist/
 *.egg
 .venv/
 .env
+.env.*
 .coverage
 htmlcov/
+
+# Safety — never commit these even if accidentally added
+CLAUDE.md
+.claude/
+.anthropic/
+*.key
+*.pem
+*secret*
+*credentials*
+memory/
