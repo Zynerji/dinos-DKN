@@ -2,7 +2,7 @@
 
 **Numerical and symbolic toolkit for the Dirac–Kerr–Newman (DKN) electron-as-quantized-Kerr-resonator framework.**
 
-Implements every computable claim of Knopp (2026), *"The electron as a quantized Kerr resonator with an antipodal Higgs boundary: a rigorous geometric synthesis of the Dirac–Kerr–Newman soliton"* (`kerr-resonator.pdf`).
+Implements every computable claim of Knopp (2026), *"The electron as a quantized Kerr resonator with an antipodal Higgs boundary: a rigorous geometric synthesis of the Dirac–Kerr–Newman soliton"* — the full paper is included at [`paper/kerr-resonator.pdf`](paper/kerr-resonator.pdf).
 
 *Dinos* (Δῖνος) is the pre-Socratic word for the cosmic vortex — the organizing principle Anaxagoras and Democritus placed at the root of matter. Over-rotating Kerr–Newman geometry is, literally, a spacetime vortex: the DKN ansatz takes that vortex seriously as the electron.
 
