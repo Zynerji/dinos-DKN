@@ -22,3 +22,13 @@ CLAUDE.md
 *secret*
 *credentials*
 memory/
+
+# LaTeX sources — PDFs only in repo
+*.tex
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
