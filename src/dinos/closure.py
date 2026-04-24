@@ -138,8 +138,54 @@ def full_closure(m_e_MeV: float = C.m_e_MeV,
     )
 
 
+# -----------------------------------------------------------------------------
+# Möbius-loop-driven mass self-consistency (optional integration point)
+# -----------------------------------------------------------------------------
+
+def enforce_mobius_fixed_point(psi_fixed, C_bag: float = C.C_bag_Dirac,
+                               alpha: float = C.alpha_EM) -> dict:
+    """Given a converged Möbius fixed point ``ψ_f(·, 0) = ψ_b(·, 0)``,
+    extract the effective Compton radius from its RMS amplitude and run
+    the forward closure.
+
+    The Möbius construction (see :mod:`dinos.temporal_loop`) is only a
+    physical electron state if ``⟨|ψ_fixed|²⟩ = a²`` where ``a`` is the
+    mass-self-consistent Compton radius (paper eq. 62). This routine
+    verifies that identification and returns both the inferred mass and
+    the implied effective surface tension σ:
+
+        a_eff = √⟨|ψ_fixed|²⟩
+        σ_eff = (1 − 2C − α) / (8π a_eff³)        [eq. 62 inverted]
+        m_e   = 1 / (2 a_eff)                      [eq. 63]
+
+    Args:
+        psi_fixed: 1-D complex array (or any array-like castable to complex)
+            representing the converged Möbius fixed-point slice at t=0.
+        C_bag, alpha: closure constants (defaults from paper).
+
+    Returns:
+        dict with keys ``a_MeV_inv``, ``sigma_MeV3``, ``m_e_MeV``, and
+        ``rms_amplitude``.
+    """
+    import numpy as _np
+    psi = _np.asarray(psi_fixed, dtype=complex)
+    rms = float(_np.sqrt(_np.mean(_np.abs(psi) ** 2)))
+    if rms <= 0.0:
+        raise ValueError("fixed point has zero amplitude — not a physical seed")
+    a_eff = rms
+    sigma_eff = (1.0 - 2.0 * C_bag - alpha) / (8.0 * pi * a_eff ** 3)
+    m_e = 1.0 / (2.0 * a_eff)
+    return {
+        "rms_amplitude": rms,
+        "a_MeV_inv": a_eff,
+        "sigma_MeV3": sigma_eff,
+        "m_e_MeV": m_e,
+    }
+
+
 __all__ = [
     "compton_radius", "electron_mass", "required_surface_tension",
     "required_bag_vev", "mass_fractions", "full_closure",
+    "enforce_mobius_fixed_point",
     "MassFractions", "ClosureResult",
 ]

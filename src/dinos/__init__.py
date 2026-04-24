@@ -5,7 +5,13 @@ Higgs boundary: a rigorous geometric synthesis of the Dirac–Kerr–Newman soli
 (2026).
 """
 
-from . import constants, closure, dm, geodesic, cp, casimir, verify
+from . import (
+    constants, closure, dm, geodesic, cp, casimir, verify,
+    coords, temporal_loop, quantum_temporal_loop,
+)
 
 __version__ = "0.1.0"
-__all__ = ["constants", "closure", "dm", "geodesic", "cp", "casimir", "verify"]
+__all__ = [
+    "constants", "closure", "dm", "geodesic", "cp", "casimir", "verify",
+    "coords", "temporal_loop", "quantum_temporal_loop",
+]

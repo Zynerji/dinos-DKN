@@ -176,6 +176,61 @@ def separation_constants(n_phi: int, n_theta: int, omega: float) -> tuple[float,
     return lam, eta
 
 
+# -----------------------------------------------------------------------------
+# Möbius self-consistent boundary condition
+# -----------------------------------------------------------------------------
+
+def quantize(*,
+             n_phi: int | None = None,
+             n_theta: int | None = None,
+             boundary_condition: str = "standard",
+             mobius_psi: np.ndarray | None = None) -> DiracLabels:
+    """Unified quantization entry point.
+
+    Parameters:
+        n_phi, n_theta: integers for the ``"standard"`` boundary
+            condition — the canonical Maslov-corrected Bohr–Sommerfeld
+            labels (paper eqs. 25–26).
+        boundary_condition: one of
+
+            * ``"standard"`` — classical BS integers (default).
+            * ``"mobius_self_consistent"`` — extract ``(n_φ, n_θ)`` from
+              a converged Möbius temporal-loop fixed point ``mobius_psi``.
+              The spatial azimuthal winding picks up the Möbius Z_2 seam
+              phase (+π), which is precisely the ``μ_φ = 2`` Maslov
+              correction in the paper's eq. 25: the fermion antiperiodicity
+              of the Dirac equation and the Möbius twist are the same
+              topological invariant.
+
+        mobius_psi: complex 1-D array of shape ``(N,)`` representing
+            ψ_f(·, t=0) = ψ_b(·, t=0) of a converged
+            :class:`dinos.temporal_loop.MobiusTemporalLoop`.
+
+    Returns:
+        :class:`DiracLabels` for the inferred ``(n_φ, n_θ)``.
+    """
+    if boundary_condition == "standard":
+        if n_phi is None or n_theta is None:
+            raise ValueError("standard BC requires both n_phi and n_theta")
+        return geodesic_to_dirac(n_phi=n_phi, n_theta=n_theta)
+
+    if boundary_condition == "mobius_self_consistent":
+        if mobius_psi is None:
+            raise ValueError("mobius_self_consistent BC requires mobius_psi")
+        phases = np.angle(np.asarray(mobius_psi, dtype=complex))
+        # Möbius Z_2 seam contributes a physical +π phase to the winding.
+        dphases = np.diff(np.unwrap(phases))
+        winding = (dphases.sum() + pi) / (2.0 * pi)
+        n_phi_mob = int(np.round(winding))
+        # Count nodal surfaces as zero-crossings of Re ψ around the loop.
+        re = np.real(np.asarray(mobius_psi, dtype=complex))
+        sign_changes = int(np.sum(np.diff(np.sign(re)) != 0))
+        n_theta_mob = max(sign_changes // 2, 0)
+        return geodesic_to_dirac(n_phi=n_phi_mob, n_theta=n_theta_mob)
+
+    raise ValueError(f"unknown boundary_condition {boundary_condition!r}")
+
+
 __all__ = [
     "sigma_fn", "delta_fn", "R_potential", "Theta_potential", "Theta_near_equator",
     "polar_action", "azimuthal_action",
@@ -183,4 +238,5 @@ __all__ = [
     "bs_azimuthal", "bs_polar",
     "DiracLabels", "geodesic_to_dirac", "ground_state", "spectrum_up_to",
     "separation_constants",
+    "quantize",
 ]

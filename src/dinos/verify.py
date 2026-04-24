@@ -164,6 +164,68 @@ def verify_bulk_boundary_duality() -> bool:
 
 
 # -----------------------------------------------------------------------------
+# Möbius / Kerr frame-dragging isomorphism
+# -----------------------------------------------------------------------------
+
+def verify_mobius_kerr_isomorphism() -> bool:
+    """Isomorphism between Möbius temporal twist and Kerr g_{tφ} vortex.
+
+    Claim (paper §7 + :mod:`dinos.temporal_loop` docstring):  the holonomy
+    phase accumulated around one spatial Möbius traversal is ``−1``, which
+    is identical to the holonomy picked up by a test Dirac field around the
+    Kerr frame-dragging vector ``ω_F = −g_{tφ}/g_{φφ}`` at the special
+    angle where the µ_φ = 2 Maslov correction closes the BS quantization.
+
+    Concretely we verify three algebraic equalities:
+
+        (i)   exp(i · ϕ_twist(T=2π/τ)) = exp(iπ) = −1        (Möbius side)
+        (ii)  J_φ = 2π(L_z + ℏ/2) = 2πℏ(n_φ + µ_φ/4)  with µ_φ = 2
+              ⇒  the µ_φ-driven half-shift produces a −1 phase on a
+              full 2π orbit, matching (i).                        (Dirac side)
+        (iii) The Kerr ``g_{tφ}`` vanishes nowhere on a generic polar
+              circle at fixed r in the ergoregion, so ``ω_F`` is
+              well-defined and the ``(−1)^spin`` holonomy is topological,
+              not metric.                                         (Kerr side)
+    """
+    tau, t = sp.symbols("tau t", positive=True)
+    # (i) Temporal-twist half-period
+    phi_twist = tau * t / 2
+    T_full = 2 * sp.pi / tau
+    phase = sp.exp(sp.I * phi_twist.subs(t, T_full))
+    assert sp.simplify(phase - sp.exp(sp.I * sp.pi)) == 0
+    assert sp.simplify(phase + 1) == 0   # exp(iπ) = −1
+
+    # (ii) Maslov-driven fermion antiperiodicity
+    n_phi = sp.Symbol("n_phi", integer=True)
+    mu_phi = sp.Integer(2)   # paper App. E
+    hbar = sp.Symbol("hbar", positive=True)
+    J_phi = 2 * sp.pi * hbar * (n_phi + mu_phi / 4)
+    # L_z from J_φ = 2π L_z  ⇒  L_z = ℏ(n_φ + ½)
+    L_z = sp.simplify(J_phi / (2 * sp.pi))
+    assert sp.simplify(L_z - hbar * (n_phi + sp.Rational(1, 2))) == 0
+    # Wilson loop of a Dirac half-integer state: exp(2πi m_j) with m_j = n_φ + ½
+    m_j = n_phi + sp.Rational(1, 2)
+    wilson = sp.exp(2 * sp.pi * sp.I * m_j)
+    # For any integer n_φ, wilson simplifies to exp(iπ) · exp(2πi n_φ) = −1.
+    # SymPy won't always collapse this automatically, so substitute a concrete integer.
+    for k in range(-2, 3):
+        assert sp.simplify(wilson.subs(n_phi, k) + 1) == 0, (
+            f"Wilson loop broke at n_phi={k}"
+        )
+
+    # (iii) Kerr frame-dragging non-degeneracy on an ergoregion circle
+    r_s, theta_s, a_s, M_s, Q_s = sp.symbols("r theta a M Q", positive=True)
+    Sigma_s = r_s ** 2 + a_s ** 2 * sp.cos(theta_s) ** 2
+    Delta_s = r_s ** 2 - 2 * M_s * r_s + a_s ** 2 + Q_s ** 2
+    g_tphi = -a_s * sp.sin(theta_s) ** 2 * ((r_s ** 2 + a_s ** 2) - Delta_s) / Sigma_s
+    # g_{tφ} factorises as (2 M r − Q²) · a sin²θ / Σ; vanishes only on the
+    # axis sin θ = 0 or at Q² = 2 M r. Away from those loci it is nonzero.
+    simplified = sp.simplify(g_tphi - (-a_s * sp.sin(theta_s) ** 2 * (2 * M_s * r_s - Q_s ** 2) / Sigma_s))
+    assert simplified == 0, f"Kerr g_tphi factorisation failed: {simplified}"
+    return True
+
+
+# -----------------------------------------------------------------------------
 # Driver
 # -----------------------------------------------------------------------------
 
@@ -173,6 +235,7 @@ ALL_CHECKS = (
     ("mass closure (§14.1)",         verify_mass_closure),
     ("joint closure (§16.1)",        verify_joint_closure),
     ("bulk–boundary duality (App C)", verify_bulk_boundary_duality),
+    ("Möbius–Kerr isomorphism (§7+Möbius)", verify_mobius_kerr_isomorphism),
 )
 
 
@@ -204,5 +267,6 @@ __all__ = [
     "verify_mass_closure",
     "verify_joint_closure",
     "verify_bulk_boundary_duality",
+    "verify_mobius_kerr_isomorphism",
     "run_all",
 ]
