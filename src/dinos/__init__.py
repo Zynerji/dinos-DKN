@@ -15,7 +15,7 @@ from . import (
     neutrinos_brannen, ckm_foot_test, hierarchy_scale, gauge_extension,
     quantum_gravity_loop, foot_branch_unification, branch_taxonomy,
     foot_systematic_scan, metallic_invariant_sweep, foot_resonance_atlas,
-    foot_mass_predictions,
+    foot_mass_predictions, heavy_quark_resonances,
 )
 
 __version__ = "0.1.0"
@@ -30,5 +30,5 @@ __all__ = [
     "neutrinos_brannen", "ckm_foot_test", "hierarchy_scale",
     "gauge_extension", "quantum_gravity_loop", "foot_branch_unification",
     "branch_taxonomy", "foot_systematic_scan", "metallic_invariant_sweep",
-    "foot_resonance_atlas", "foot_mass_predictions",
+    "foot_resonance_atlas", "foot_mass_predictions", "heavy_quark_resonances",
 ]
