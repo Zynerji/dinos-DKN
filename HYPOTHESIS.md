@@ -1898,3 +1898,48 @@ Remaining open structural questions:
    1% at b = 1/(golden²·plastic). Real test pending experiment.)
 
 7 new tests passing. Total: 475 tests pass.
+
+---
+
+# Step 55 — vv.txt 20-algorithm audit
+
+vv.txt was framed as the "rigorous, not analogical" version of the
+prior 20-algorithm files. After audit:
+
+| Verdict | Count |
+|---|---|
+| CONDITIONAL_PARTIAL (depends on cz2 #1 SL(2,Z) PARTIAL) | 4 |
+| COMPLEXITY_FALSE (claimed speedups don't hold) | 3 |
+| OVERLOAD (depends on cz2 #2/#8/#9 — already FALSIFIED) | 3 |
+| ANALOGY_ONLY (no math bridge from physics to compute) | 2 |
+| CATEGORY_ERROR | 1 |
+| INFORMATION_LOSS | 1 |
+| NO_PROOF_OF_HARDNESS | 1 |
+| EXISTING_PRIMITIVE (already exists, no advantage) | 1 |
+| UNESTABLISHED_ADMISSIBILITY | 1 |
+| PHYSICAL_MISMATCH | 1 |
+| INSECURE | 1 |
+| EXISTING_NOT_NEW | 1 |
+| **CONFIRMED** | **0** |
+
+Key wrong claims (specific): 
+- vv #1: matrix powers are already O(log n) via fast exponentiation
+- vv #5: metallic-ratio CF [n;n,n,...] is trivially parallelizable
+- vv #6: 2x2 matrix can't store N signatures (information loss)
+- vv #10: Reed-Solomon already at Singleton bound; no topological speedup
+- vv #15: hyperbolic routing exists (Boguña 2010), no SL(2,Z) needed
+- vv #17: depends on a(b) gap equation (FALSIFIED in Step 51)
+
+Cumulative tally of speculative-extension validation:
+- grok 0/8 confirmed
+- cz 0/10 confirmed
+- ej 0/20 confirmed
+- vv 0/20 confirmed
+- ee theorems: 1/5 confirmed (Z3 cover eigenvalue formula T2)
+
+The framework's REAL physics contributions (Layer 1 single-electron
+soliton, Layer 2 metallic Foot atlas with Higgs prediction) remain
+intact. Layer 3 speculative extensions (any application beyond mass
+prediction in particle physics) remain consistently un-confirmed.
+
+6 new tests passing. Total: 481 tests pass.
