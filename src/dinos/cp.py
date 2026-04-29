@@ -2,7 +2,7 @@
 
 Paper §4, Appendix B.
 
-Flat-space limit (aω, aμ → 0):
+Flat-space limit (aω, aμ → 0), Dirac convention:
 
     λ_CP² = k²,     |k| = j + ½,     j ∈ {½, 3/2, …}      [Prop. 4.1]
 
@@ -10,12 +10,37 @@ Rayleigh–Schrödinger expansion in (aω, aμ) (eq. 88):
 
     λ_CP² = k² − ½ a² (ω² − μ²) + O((aω)⁴)
 
-For exact values one solves the second-order ODE (eq. 87):
+The closed-form helpers :func:`lambda_CP_flat` and :func:`lambda_CP_leading`
+implement the Dirac convention above and are correct.
+
+KNOWN ISSUE — :func:`solve_cp_exact`
+------------------------------------
+The shooter solves the angular ODE (eq. 87)
 
     ∂_x[(1−x²) ∂_x S₊] + [a²(ω² − μ²)(1−x²)
         − (m_j − ½)² / (1 − x²) + λ_CP² + ¼] S₊ = 0,    x = cos θ
 
-with regularity at x = ±1. We provide a shooting-based solver for that.
+with the upper-component Frobenius initial condition
+``S(−1+ε) = 1, S'(−1+ε) = (m_j − ½)/(2(1+ε))`` and Dirichlet matching
+at ``x = +1−ε``.  This eigenvalue problem produces the **orbital**
+``l(l+1)`` of the upper Dirac spinor component, NOT the Dirac
+``|k|² = (j + ½)²`` advertised in the module-level expansion above.
+
+For ``m_j = ½`` the lowest eigenvalue is ≈ 2 (= l(l+1) for l=1), not
+1 (= |k|² for j=½).  Numerical eigenvalues at flat limit, m_j = 0.5
+and 1.5:
+
+    m_j = 0.5:   λ² ≈ 2.00, 12.39, …       (l = 1, 3, …)
+    m_j = 1.5:   λ² ≈ 1.75, 11.75, …       (l(l+1) − ¼  for  l = 1, 2, …)
+
+Use :func:`lambda_CP_leading` for the Dirac perturbative formula.  Use
+:mod:`dinos.spectrum` and :mod:`dinos.polar_strip` for the verified
+azimuthal + analytic-polar Möbius bridge to the Dirac spectrum.
+
+Resolution of the discrepancy is left for a future Step (would require
+a different BC at the second turning point — Robin/Frobenius matching
+rather than Dirichlet — to project onto the lower spinor component
+and recover the Dirac k labelling).
 """
 
 from __future__ import annotations
@@ -109,9 +134,21 @@ def _shoot(problem: CPProblem, lam_CP_sq: float,
 
 def solve_cp_exact(m_j: float, a: float, omega: float, mu: float,
                    k_guess: int = 1, bracket: tuple[float, float] | None = None) -> float:
-    """Shoot-and-match solve for λ_CP² using a bracket around the flat-space eigenvalue.
+    """Shoot-and-match solve of the angular ODE (eq. 87).
 
-    Returns |λ_CP| (positive root).
+    .. warning::
+       In flat limit (a = ω = μ = 0) this returns sqrt(l(l+1)) for the
+       upper-component orbital quantum number l — **not** the Dirac
+       |k| = j + ½ that the module docstring's expansion convention
+       suggests.  See the "KNOWN ISSUE" section in the module docstring
+       for the discrepancy and resolution path.
+
+       For the Dirac perturbative formula use :func:`lambda_CP_leading`.
+       For the flat-limit Dirac spectrum use :mod:`dinos.spectrum` +
+       :mod:`dinos.polar_strip`.
+
+    Returns the positive square root of the eigenvalue extracted by the
+    Dirichlet-at-+1 shooting condition.
     """
     prob = CPProblem(m_j=m_j, a=a, omega=omega, mu=mu)
     lam0_sq = float(k_guess) ** 2
