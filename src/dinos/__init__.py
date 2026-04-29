@@ -20,6 +20,7 @@ from . import (
     foot_canonical_atlas, foot_atlas_discrimination,
     foot_predictions_extended,
     quark_generation_foot, heavy_baryon_foot, foot_sector_structure,
+    key_predictions_summary,
 )
 
 __version__ = "0.1.0"
@@ -39,4 +40,5 @@ __all__ = [
     "foot_duality", "foot_canonical_atlas", "foot_atlas_discrimination",
     "foot_predictions_extended",
     "quark_generation_foot", "heavy_baryon_foot", "foot_sector_structure",
+    "key_predictions_summary",
 ]
