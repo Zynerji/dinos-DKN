@@ -5,9 +5,23 @@ from math import isclose, pi
 from dinos import foot_phi_spectroscopy as fps
 
 
-def test_six_phi_invariants_documented():
-    """6 of 11 confirmed metallic resonances have simple phi matches."""
-    assert fps.n_phi_invariants() == 6
+def test_ten_phi_invariants_documented():
+    """10 of 11 confirmed metallic resonances have simple phi matches
+    (Steps 23 + 24)."""
+    assert fps.n_phi_invariants() == 10
+
+
+def test_d_star_j_psi_phi_is_four_thirty_fifths():
+    """D*-J/psi phi = 4/35 (extraordinary 0.004% match)."""
+    pi_inv = next(p for p in fps.PHI_INVARIANTS if p.family == "D_star_J_psi")
+    assert isclose(pi_inv.simple_value, 4/35, rel_tol=1e-12)
+    assert pi_inv.relative_error_pct < 0.01
+
+
+def test_tensor_meson_phi_is_seventeen_thirtieths():
+    """Tensor mesons phi = 17/30."""
+    pi_inv = next(p for p in fps.PHI_INVARIANTS if p.family == "tensor_mesons")
+    assert isclose(pi_inv.simple_value, 17/30, rel_tol=1e-12)
 
 
 def test_lepton_phi_is_two_ninths():
@@ -34,9 +48,9 @@ def test_axial_and_scalar_both_pi_thirds():
 
 
 def test_fraction_of_resonances_with_phi_match():
-    """Roughly half of confirmed resonances have phi-invariants."""
+    """10 of 11 confirmed resonances have phi-invariants (~91%)."""
     frac = fps.fraction_phi_invariants()
-    assert 0.4 < frac < 0.7
+    assert frac > 0.85
 
 
 def test_all_phi_matches_below_two_percent():

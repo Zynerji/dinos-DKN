@@ -58,23 +58,25 @@ class PhiInvariant:
     relative_error_pct: float
 
 
-# Catalog of confirmed phi-invariants
+# Catalog of confirmed phi-invariants (Steps 23 + 24)
 PHI_INVARIANTS: list[PhiInvariant] = [
+    # Step 23 originals (clean simple-form matches)
     PhiInvariant("charged_leptons",    0.222235, "2/9",         2/9,      0.006),
     PhiInvariant("B_mesons",           0.083106, "1/12",        1/12,     0.272),
     PhiInvariant("charmonium_eta_c",   0.264168, "pi/12",       pi/12,    0.897),
     PhiInvariant("light_baryons",      0.508103, "arccos(7/8)", acos(7/8), 0.540),
     PhiInvariant("axial_vector",       1.040158, "pi/3",        pi/3,     0.654),
     PhiInvariant("scalar_mesons",      1.034016, "pi/3",        pi/3,     1.276),
+    # Step 24 wider search (additional matches)
+    PhiInvariant("D_star_J_psi",       0.114281, "4/35",         4/35,    0.004),
+    PhiInvariant("tensor_mesons",      0.566530, "17/30",        17/30,   0.024),
+    PhiInvariant("Jpsi_Upsilon",       0.990379, "6*pi/19",      6*pi/19, 0.172),
+    PhiInvariant("charmonium_1S_2S_1P", 0.793493, "19/24",        19/24,   0.230),
 ]
 
-# Resonances whose phi has no clean simple match (yet)
+# Remaining resonance with no clean phi match
 PHI_NOT_MATCHED: list[str] = [
-    "vector_mesons",
-    "charmonium_1S_2S_1P",
-    "D_star_J_psi",
-    "Jpsi_Upsilon",
-    "tensor_mesons",
+    "vector_mesons",   # phi = 0.0368, no compelling simple form
 ]
 
 
