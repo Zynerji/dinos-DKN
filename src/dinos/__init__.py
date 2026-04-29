@@ -19,7 +19,7 @@ from . import (
     foot_robustness, foot_phi_spectroscopy, foot_duality,
     foot_canonical_atlas, foot_atlas_discrimination,
     foot_predictions_extended,
-    quark_generation_foot, heavy_baryon_foot,
+    quark_generation_foot, heavy_baryon_foot, foot_sector_structure,
 )
 
 __version__ = "0.1.0"
@@ -38,5 +38,5 @@ __all__ = [
     "foot_meta_pattern", "foot_robustness", "foot_phi_spectroscopy",
     "foot_duality", "foot_canonical_atlas", "foot_atlas_discrimination",
     "foot_predictions_extended",
-    "quark_generation_foot", "heavy_baryon_foot",
+    "quark_generation_foot", "heavy_baryon_foot", "foot_sector_structure",
 ]
