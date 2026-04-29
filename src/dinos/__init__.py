@@ -30,7 +30,7 @@ from . import (
     algorithms_atlas, metallic_rg_flow, modular_form_spectrum,
     monodromy_word_search, cz_claims_validation,
     monodromy_hecke_test, ee_ej_validation, layer2_principles,
-    vv_claims_validation,
+    vv_claims_validation, metallic_selection_rule,
 )
 
 __version__ = "0.1.0"
@@ -62,5 +62,5 @@ __all__ = [
     "modular_form_spectrum", "monodromy_word_search",
     "cz_claims_validation",
     "monodromy_hecke_test", "ee_ej_validation", "layer2_principles",
-    "vv_claims_validation",
+    "vv_claims_validation", "metallic_selection_rule",
 ]
