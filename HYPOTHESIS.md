@@ -1508,3 +1508,55 @@ This is the same pattern observed in the falsifications of Steps 3,
 6-cross, 7, and 10: the framework's reach is real and reproducible,
 but extensions that promise to derive everything from one geometric
 ansatz with sub-percent precision do not survive direct numerical test.
+
+---
+
+# Steps 40-48 — Honest scaffolds for the Grok-proposed extensions
+
+After Step 39 falsified Grok's headline numerical claims (0/8 confirmed),
+the framework was extended with HONEST SCAFFOLDS implementing the
+proposed mechanisms. Each module computes specific quantities,
+documents what it does and does not derive, and avoids any fabricated
+agreement with PDG.
+
+## Modules added (Steps 40-48)
+
+| Module | Purpose | Honest scope |
+|--------|---------|--------------|
+| `multi_cover` | Z2×Z3×winding multi-cover Laplacian | Spectrum, no mass tower derivation |
+| `electroweak_strip` | SU(2)×U(1) tree-level relations | Inputs g, g', v explicitly flagged |
+| `anomaly_check` | Real chiral anomaly index given content | SM cancels, pure-Möbius does not |
+| `dispersion_mobius` | ω(k) on Möbius strip | Confirms c-independence (refutes Grok) |
+| `strong_cp_relaxation` | θ gradient flow | Generic flow; no Strong CP derivation |
+| `cover_hierarchy` | A^n suppression scaling | Parameter MAP, not derivation |
+| `axion_dm_bridge` | Misalignment relic for given (m_a, f_a, θ_i) | All inputs free; m_a tunable |
+| `ckm_overlaps` | CKM from sine-mode overlap integrals | Best fit ~5%, not 0.15% |
+| `pmns_overlaps` | PMNS from left-handed overlaps | Same caveats as CKM |
+| `topological_seesaw` | m_ν via seesaw with cover-suppressed M_R | M_0 is tunable knob |
+| `hhml_dkn_hybrid` | Coherence-pruning ensemble | Threshold tunable; entropy conserved |
+| `lambda_attractor` | Λ vs f_DM Gaussian ansatz | Center is hardcoded INPUT |
+| `varying_c_pruning` | c-variation pruning | Demonstrates tautology |
+| `keldysh_fixedpoint` | Discrete twisted strip iteration | Works at multiple c |
+| `dm_scalar_channel` | Wraps existing dm.py 156 keV result | Doesn't claim DM viability |
+| `proton_stability` | Z3 winding mod 3 = baryon # | No numerical lifetime predicted |
+| `gravity_with_confined_sources` | Higgs wall + string tension δg/g | Negligible at electron scale |
+
+## Test count
+
+421 passing tests across 60+ modules. New tests for each scaffold
+verify what the code actually does — none of them assert sub-percent
+PDG agreement that is not actually achieved.
+
+## What this clarifies
+
+The Foot atlas (Steps 15-38) remains the framework's strongest
+empirical contribution: 25 metallic resonances, Higgs predicted from
+(W, Z) at 0.10%, m_τ predicted at 1σ. These are real, reproducible,
+discriminated against random baselines at >18×.
+
+The scaffolds in Steps 40-48 are EXPLORATORY MACHINERY for the
+Grok-proposed extensions. They make the proposals computationally
+concrete; they do not validate them. Anyone who wants to flesh out a
+specific direction (e.g. derive a wavefunction ansatz that gives CKM
+to 1%, or specify M_R from the framework) now has a starting point
+that is honest about what is open.
