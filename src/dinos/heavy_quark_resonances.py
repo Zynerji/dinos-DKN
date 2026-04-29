@@ -42,7 +42,7 @@ from . import metallic_invariant_sweep as mis
 from . import foot_resonance_atlas as fra
 
 
-# Heavy quark triplets and their metallic b values (within 0.5% match)
+# Heavy quark + extended hadron triplets and their metallic b values
 HEAVY_QUARK_RESONANCES: dict[str, dict] = {
     "charmonium (eta_c, J/psi, chi_c)": {
         "masses": [2983.9, 3096.90, 3414.71],
@@ -63,6 +63,27 @@ HEAVY_QUARK_RESONANCES: dict[str, dict] = {
         "masses": [2010.26, 2112.20, 3096.90],
         "b_expression": "1/(bronze * supergolden^2)",
         "b_value_factory": lambda: 1.0 / (mis.BRONZE * mis.SUPERGOLDEN ** 2),
+    },
+    # Extended hadron triplets (Step 21)
+    "(B_0, B_s, B_c)": {
+        "masses": [5279.66, 5366.93, 6274.5],
+        "b_expression": "1/copper^2",
+        "b_value_factory": lambda: 1.0 / (mis.COPPER ** 2),
+    },
+    "tensor (a_2, K_2*, f_2')": {
+        "masses": [1318.2, 1427.3, 1525.0],
+        "b_expression": "1/(copper^2 * plastic)",
+        "b_value_factory": lambda: 1.0 / (mis.COPPER ** 2 * mis.PLASTIC),
+    },
+    "axial (b_1, h_1, a_1)": {
+        "masses": [1229.5, 1166, 1230],
+        "b_expression": "1/(bronze^2 * nickel)",
+        "b_value_factory": lambda: 1.0 / (mis.BRONZE ** 2 * mis.NICKEL),
+    },
+    "scalar (f_0(500), f_0(980), a_0)": {
+        "masses": [475, 990, 980],
+        "b_expression": "1/(3 * supergolden)",
+        "b_value_factory": lambda: 1.0 / (3 * mis.SUPERGOLDEN),
     },
 }
 

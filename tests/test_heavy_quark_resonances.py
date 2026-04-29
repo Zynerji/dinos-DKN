@@ -6,9 +6,9 @@ from dinos import heavy_quark_resonances as hqr
 from dinos import metallic_invariant_sweep as mis
 
 
-def test_four_heavy_quark_resonances():
-    """4 heavy quark triplets are documented."""
-    assert len(hqr.HEAVY_QUARK_RESONANCES) == 4
+def test_eight_heavy_and_extended_hadron_resonances():
+    """8 heavy/extended hadron triplets documented (Step 18 + Step 21)."""
+    assert len(hqr.HEAVY_QUARK_RESONANCES) == 8
 
 
 def test_charmonium_b_is_one_over_copper_silver_squared():
@@ -25,10 +25,32 @@ def test_jpsi_upsilon_b_is_half_over_supergolden():
     assert isclose(info["b_value_factory"](), expected, rel_tol=1e-12)
 
 
-def test_atlas_returns_four_resonances():
-    """Atlas function returns 4 FootResonance objects."""
+def test_atlas_returns_eight_resonances():
+    """Atlas function returns 8 FootResonance objects."""
     atlas = hqr.heavy_quark_resonance_atlas()
-    assert len(atlas) == 4
+    assert len(atlas) == 8
+
+
+def test_b_meson_b_is_one_over_copper_squared():
+    """(B_0, B_s, B_c) at b = 1/copper^2 — tightest match found (0.004%)."""
+    info = hqr.HEAVY_QUARK_RESONANCES["(B_0, B_s, B_c)"]
+    expected = 1.0 / (mis.COPPER ** 2)
+    assert isclose(info["b_value_factory"](), expected, rel_tol=1e-12)
+
+
+def test_tensor_meson_b_uses_plastic():
+    """Tensor mesons triplet uses plastic ratio."""
+    info = hqr.HEAVY_QUARK_RESONANCES["tensor (a_2, K_2*, f_2')"]
+    expected = 1.0 / (mis.COPPER ** 2 * mis.PLASTIC)
+    assert isclose(info["b_value_factory"](), expected, rel_tol=1e-12)
+
+
+def test_axial_vector_b_uses_nickel():
+    """Axial vector mesons use nickel — first appearance of nickel
+    in the metallic Foot atlas."""
+    info = hqr.HEAVY_QUARK_RESONANCES["axial (b_1, h_1, a_1)"]
+    expected = 1.0 / (mis.BRONZE ** 2 * mis.NICKEL)
+    assert isclose(info["b_value_factory"](), expected, rel_tol=1e-12)
 
 
 def test_charmonium_resonance_consistency():
