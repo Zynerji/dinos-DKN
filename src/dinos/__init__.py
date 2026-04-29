@@ -14,6 +14,7 @@ from . import (
     quarks_foot_test, holonomy_phi, phi_resolution,
     neutrinos_brannen, ckm_foot_test, hierarchy_scale, gauge_extension,
     quantum_gravity_loop, foot_branch_unification, branch_taxonomy,
+    foot_systematic_scan,
 )
 
 __version__ = "0.1.0"
@@ -27,5 +28,5 @@ __all__ = [
     "quarks_foot_test", "holonomy_phi", "phi_resolution",
     "neutrinos_brannen", "ckm_foot_test", "hierarchy_scale",
     "gauge_extension", "quantum_gravity_loop", "foot_branch_unification",
-    "branch_taxonomy",
+    "branch_taxonomy", "foot_systematic_scan",
 ]
