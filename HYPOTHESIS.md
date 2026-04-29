@@ -1684,3 +1684,55 @@ ch.txt-driven implementation:
 - Extended SL(2,ℤ) word search confirming PARTIAL verdict on cj2 #1
 
 Total tests: 445 passing.
+
+---
+
+# Step 52 — cz.txt validation: 0 of 10 transdisciplinary claims survive
+
+A 448-line cz.txt analysis file proposed applying the Foot/Koide/metallic
+machinery to 10 fields outside particle physics: genetics, finance,
+climate, AI, pharma, ecology, urban planning, consciousness, cosmology.
+Each comes with specific Q values and "world-changing" framing.
+
+Two fundamental problems shared by most of the proposals:
+
+1. **Unit dependence.** The Koide formula Q = (Σ√x)²/Σx is unit-invariant
+   only when all three components share the same dimension. cz applies it
+   to triplets like (housing_cost, commute_time, jobs/km²) — three
+   incommensurable units. Q changes dramatically with unit choice
+   (urban planner Q ranges 1.24-1.71 depending on whether area is in km²
+   or sq-mi).
+
+2. **Fabricated empirical "matches".** The specific Q values cz cites
+   are not actually computed from real data. When tested directly:
+   - cz #2 (finance): Dec-2007 Dow/NASDAQ/S&P (13260, 2652, 1468)
+     give Q = 2.42, b = 0.69 — NOT the claimed Q = 1.498.
+   - cz #10 (cosmology): Planck 2018 Ω_m, Ω_r, Ω_Λ give b = 1.033 —
+     NOT the claimed b = √2.
+
+Verdicts via `dinos.cz_claims_validation`:
+
+| cz # | Claim | Verdict |
+|---|---|---|
+| 1 | Genetic codon classifier (Z₃×Z₂) | UNDEFINED (4 letters, 3 branches) |
+| 2 | Koide market stabilizer | **FALSIFIED** (Q ≠ 1.498) |
+| 3 | Climate tipping points | UNIT-DEPENDENT (mixed dimensions) |
+| 4 | Z₃ neural architecture | UNVALIDATED (implementable but no benchmarks) |
+| 5 | Metallic drug designer | UNDEFINED (incommensurable energies) |
+| 6 | SK ecosystem manager | UNIT-DEPENDENT (no derivation from pop dynamics) |
+| 7 | Universal CF anomaly detector | OVERCLAIMED (CF detects rationality only) |
+| 8 | Metallic urban planner | UNIT-DEPENDENT (Q changes with units) |
+| 9 | Z₃ consciousness correlate | UNDEFINED (non-numerical "subsystems") |
+| 10 | Cyclic universe model | **FALSIFIED** (cosmic b ≈ 1.03, not √2) |
+
+**0 of 10 transdisciplinary "world-changing" claims survive direct test.**
+This is the same pattern as Step 39's Grok validation: pattern-matching
+across fields without dimensional analysis or empirical grounding.
+
+This does NOT diminish the Foot atlas's actual achievement: 25 metallic
+resonances spanning 8 orders of magnitude in mass (within particle
+physics where masses ARE commensurable), Higgs from (W,Z) at 0.10%, etc.
+What it does diminish: the implication that the same machinery can be
+mechanically applied to any three numbers in any field.
+
+13 new tests passing. Total: 458 tests pass.

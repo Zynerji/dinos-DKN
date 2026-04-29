@@ -28,7 +28,7 @@ from . import (
     keldysh_fixedpoint, dm_scalar_channel, proton_stability,
     gravity_with_confined_sources, theorems_extension,
     algorithms_atlas, metallic_rg_flow, modular_form_spectrum,
-    monodromy_word_search,
+    monodromy_word_search, cz_claims_validation,
 )
 
 __version__ = "0.1.0"
@@ -58,4 +58,5 @@ __all__ = [
     "theorems_extension",
     "algorithms_atlas", "metallic_rg_flow",
     "modular_form_spectrum", "monodromy_word_search",
+    "cz_claims_validation",
 ]
