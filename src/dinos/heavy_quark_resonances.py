@@ -85,6 +85,47 @@ HEAVY_QUARK_RESONANCES: dict[str, dict] = {
         "b_expression": "1/(3 * supergolden)",
         "b_value_factory": lambda: 1.0 / (3 * mis.SUPERGOLDEN),
     },
+    # Step 28 extended findings (8 more)
+    "(eta, h_1(1170), eta_c)": {
+        "masses": [547.86, 1166, 2983.9],
+        "b_expression": "golden/bronze",
+        "b_value_factory": lambda: mis.GOLDEN / mis.BRONZE,
+    },
+    "decuplet (Delta, Sigma*, Omega)": {
+        "masses": [1232.0, 1383.7, 1672.45],
+        "b_expression": "1/(golden*nickel*plastic)",
+        "b_value_factory": lambda: 1.0 / (mis.GOLDEN * mis.NICKEL * mis.PLASTIC),
+    },
+    "(K, K*, B*)": {
+        "masses": [497.611, 891.66, 5324.71],
+        "b_expression": "1/plastic",
+        "b_value_factory": lambda: 1.0 / mis.PLASTIC,
+    },
+    "gauge (W, Z, H)": {
+        "masses": [80379.0, 91188.0, 125100.0],
+        "b_expression": "1/(copper*plastic^2)",
+        "b_value_factory": lambda: 1.0 / (mis.COPPER * mis.PLASTIC ** 2),
+    },
+    "(K, D, B)": {
+        "masses": [497.611, 1869.66, 5279.66],
+        "b_expression": "bronze/nickel",
+        "b_value_factory": lambda: mis.BRONZE / mis.NICKEL,
+    },
+    "(rho, rho(1450), rho(1700))": {
+        "masses": [775.26, 1465, 1720],
+        "b_expression": "1/(bronze*plastic)",
+        "b_value_factory": lambda: 1.0 / (mis.BRONZE * mis.PLASTIC),
+    },
+    "(rho, b_1, omega)": {
+        "masses": [775.26, 1229.5, 782.65],
+        "b_expression": "1/(golden^2 * silver)",
+        "b_value_factory": lambda: 1.0 / (mis.GOLDEN ** 2 * mis.SILVER),
+    },
+    "(Xi_c, Xi_c_prime, Omega_c)": {
+        "masses": [2467.94, 2578.4, 2695.2],
+        "b_expression": "1/(nickel^2 * supergolden)",
+        "b_value_factory": lambda: 1.0 / (mis.NICKEL ** 2 * mis.SUPERGOLDEN),
+    },
 }
 
 
