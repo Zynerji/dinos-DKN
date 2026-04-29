@@ -16,6 +16,7 @@ from . import (
     quantum_gravity_loop, foot_branch_unification, branch_taxonomy,
     foot_systematic_scan, metallic_invariant_sweep, foot_resonance_atlas,
     foot_mass_predictions, heavy_quark_resonances, foot_meta_pattern,
+    foot_robustness,
 )
 
 __version__ = "0.1.0"
@@ -31,5 +32,5 @@ __all__ = [
     "gauge_extension", "quantum_gravity_loop", "foot_branch_unification",
     "branch_taxonomy", "foot_systematic_scan", "metallic_invariant_sweep",
     "foot_resonance_atlas", "foot_mass_predictions", "heavy_quark_resonances",
-    "foot_meta_pattern",
+    "foot_meta_pattern", "foot_robustness",
 ]
