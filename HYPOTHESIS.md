@@ -1426,3 +1426,85 @@ metallic Foot resonances together:
 
 **347 passing unit tests across 50+ modules.** All claims in this
 document are reproducible by `pytest tests/`.
+
+---
+
+# Step 39 — Validation pass on the Grok-proposed extensions
+
+A 2300-line Grok conversation proposed ~20 extensions to the framework
+(SU(3) flux-tube confinement, ElectroweakPolarStrip, multi-cover
+generations, CKM/PMNS from polar overlaps, topological seesaw, HHmL
+multiverse hybrid, axion DM bridge, emergent c as eigenvalue,
+Λ + f_DM attractor, Z₂×Z₃ anomaly cancellation, c from string
+compactification). Each was presented with sub-percent numerical
+"matches" to PDG values.
+
+Direct numerical validation in `dinos.grok_claims_validation`:
+
+| Grok claim                                  | Verdict        |
+|---------------------------------------------|----------------|
+| 1D SU(3) area-law confinement                | FALSIFIED      |
+| Emergent c as eigenvalue (stability minimum) | FALSIFIED      |
+| ElectroweakPolarStrip "derives" sin²θ_W     | TAUTOLOGICAL   |
+| CKM angles from polar overlaps               | UNDERSPECIFIED |
+| PMNS angles from polar overlaps              | UNDERSPECIFIED |
+| Λ_eff vs f_DM Gaussian attractor at 0.27    | CURVE-FIT      |
+| c from string compactification ≈ 1           | FALSIFIED      |
+| Z₂×Z₃ anomaly index = 0                     | HARD-CODED     |
+| Topological seesaw → Σm_ν = 0.059 eV       | TUNABLE        |
+
+**0 of 8 tested headline claims are CONFIRMED.** Specific findings:
+
+1. SU(3) on 1D Möbius cannot give an area-law because there is no
+   transverse area. Z3 center holonomy gives |Tr(U^N)|/3 = 1 exactly
+   (zero string tension), generic SU(3) holonomies give traces
+   oscillating in [0, 1] without decay. (`gauge_confinement.py`)
+
+2. The dispersion ω(k) = c|k| + const is linear by construction at
+   every c, so the "stability minimum at c=1" is identically zero
+   spread across c. The simulation Grok displayed in fact showed
+   residuals 0.001726 at every c — Grok then narrated that as a
+   minimum at c=1.
+
+3. The "Electroweak derivation" hardcodes g₂ = 0.652 and g' = 0.357
+   (the observed SM couplings), then computes tree-level mW, mZ,
+   sin²θ_W from those. No quantity is derived from the Möbius
+   geometry; the framework retains every SM free parameter.
+
+4. CKM/PMNS from "overlap integrals" — Grok specifies no wavefunction
+   ansatz. The simplest sine-mode ansatz scanned over the only free
+   parameter (a polar offset δ) cannot match θ₁₂ better than ~5%,
+   not 0.15%.
+
+5. The Λ_eff Gaussian attractor equation literally has the answer
+   (0.27) hardcoded as the Gaussian center. Replacing it with any
+   other target gives an "attractor" at that target — no physics.
+
+6. The string compactification formula c = (ℓ_s/ℓ_Pl) · A · e^φ with
+   Grok's own MC priors gives mean c = 0.4801, not 1. The "match"
+   requires an unspecified normalization that does no work.
+
+7. The anomaly check function literally contains `return 0`, with no
+   fermion content specified.
+
+8. The seesaw "prediction" Σm_ν = 0.059 eV requires tuning the seesaw
+   scale M_R; the framework does not constrain M_R.
+
+What survives as honest scaffolds (in `gauge_confinement.py`, etc.):
+- SU(3) Wilson-loop machinery on the Z₃ Möbius (computes traces
+  honestly; no false claims of confinement)
+- Z3 center-element holonomy (mathematically valid as Z3 cover)
+- SU(3) Möbius Laplacian (3-color version of the existing SU(2)
+  scaffold; eigenvalue spectrum is real)
+
+The remaining Grok-proposed modules (multi-cover, topological seesaw,
+electroweak strip, axion bridge, HHmL hybrid, etc.) are tractable as
+SCAFFOLDS — code that runs and computes specific quantities without
+claiming sub-percent agreement with PDG. They will be implemented in
+that spirit, with the validation module as the standing record that
+no headline numerical "derivation" was achieved.
+
+This is the same pattern observed in the falsifications of Steps 3,
+6-cross, 7, and 10: the framework's reach is real and reproducible,
+but extensions that promise to derive everything from one geometric
+ansatz with sub-percent precision do not survive direct numerical test.
