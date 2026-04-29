@@ -1213,3 +1213,92 @@ Files added in Step 11:
   prediction m_τ = 1776.98 MeV is testable by next-generation
   measurements.
 - **Whitepaper to be updated** with Step 11 — the resolution.
+
+---
+
+# Step 12 — Five extensions: neutrinos, CKM, hierarchy, gauge, gravity
+
+**Final suite after Step 12: 234 passing tests (220 prior + 14 new).**
+
+Treated as scaffolds + falsification tests, not derivations. Result:
+**one real prediction (neutrinos)** + four honest non-derivations.
+
+## 12a — Neutrinos: REAL PREDICTION
+
+`dinos.neutrinos_brannen` (4 tests). With **b = √2 universal across
+charged leptons AND neutrinos** + Foot ansatz + Δm² constraints:
+
+| Mass | Predicted (eV) |
+|---|---|
+| m_1 (lightest) | 0.000357 |
+| m_2 | 0.00860 |
+| m_3 (heaviest) | 0.0502 |
+| **Σm_ν** | **0.0592** ← within Planck bound 0.12 eV |
+
+**Branch:** charged leptons in *all-positive* branch (Q = 3/2);
+neutrinos in *one-sign-flip* branch (Q ≠ 3/2 but mass scale predicted).
+Both use the same b = √2 — universality across fermion families.
+
+**Falsifiable target:** future cosmological surveys (Euclid, DESI,
+CMB-S4, σ ≈ 0.02 eV). Σm_ν = 0.06 ± 0.02 eV → confirms; outside
+[0.04, 0.10] → excludes.
+
+## 12b — CKM: PARTIAL near-miss
+
+sin(2/9) = 0.2204 vs Wolfenstein λ = 0.2253. Gap **0.0049 (~ 2.2%)** —
+suggestive but outside experimental λ uncertainty (~0.3%). No clean
+Foot extension to CKM works; near-miss with sub-leading corrections.
+
+## 12c — Hierarchy: NOT addressed
+
+Bag wall (0.43 MeV) vs SM Higgs (246 GeV) differ by **5.8 orders
+of magnitude**. Separate sectors. Framework gives no UV completion of
+SM Higgs. Hierarchy problem (m_H << m_Pl) **not addressed**.
+
+## 12d — Gauge: scaffold ONLY
+
+SU(2) Wilson-line operator on Möbius cover constructed (each node
+carries isospin doublet). Spectrum computed; verified unitary. **Does
+NOT reproduce SM gauge SU(3)×SU(2)×U(1)** or predict W/Z masses.
+
+## 12e — Quantum gravity: confirms negligibility
+
+One-loop graviton correction to m_e: relative ~ **(m_e/M_Pl)² = 10⁻⁴⁴**.
+Confirms Step 6c's classical 10⁻⁴⁷. Framework's neglect of gravity
+at electron scale is justified. **Full quantum gravity not solved.**
+
+## Step 12 verdict
+
+| Item | Verdict |
+|---|---|
+| Neutrinos | ✓ Mass scale predicted (Σm_ν ~ 0.06 eV); falsifiable |
+| CKM | ◐ Partial near-miss (sin(2/9) ≈ λ to 2%); not derivation |
+| Hierarchy | ✗ Not addressed; framework lives in separate sector |
+| Gauge structure | ✗ Scaffold only; SM gauge not derived |
+| Quantum gravity | ✗ Confirmed negligible at electron scale; not solved |
+
+The lepton tower remains the framework's most complete derivation.
+Neutrino mass scale is the *next* substantive prediction.
+
+Files added in Step 12:
+- `src/dinos/neutrinos_brannen.py` (4 tests)
+- `src/dinos/ckm_foot_test.py` (2 tests)
+- `src/dinos/hierarchy_scale.py` (2 tests)
+- `src/dinos/gauge_extension.py` (4 tests)
+- `src/dinos/quantum_gravity_loop.py` (2 tests)
+
+---
+
+# Last shipping summary (for real this time)
+
+- **234 passing tests** across 24 modules.
+- **Two complete prediction sets**: charged-lepton tower (Step 11) and
+  neutrino mass scale (Step 12a).
+- **Multiple clean falsifications**: topological lepton tower (Step 3),
+  cross-repo Bronze (Step 6-cross), metallic-ratio sweep (Step 7),
+  quark Foot+Koide universality (Step 10a).
+- **Multiple explicit non-derivations**: CKM, hierarchy, SM gauge,
+  full quantum gravity.
+- Framework reach now *fully mapped*: single-electron soliton with
+  derived charged-lepton tower, predicted neutrino mass scale, and
+  clear boundaries beyond.
