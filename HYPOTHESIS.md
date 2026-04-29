@@ -611,7 +611,7 @@ not a theory of everything and shouldn't be presented as one.
 
 ---
 
-# Final shipping summary
+# Final shipping summary (initial)
 
 - **111 passing tests** across 7 modules + 7 test files added this session.
 - **HYPOTHESIS.md** is the complete narrative: claims, methods, results, and limits.
@@ -619,4 +619,123 @@ not a theory of everything and shouldn't be presented as one.
 - **`cp.solve_cp_exact` docstring bug fixed.**
 - **Future work documented** above.
 
-The artifact is at a clean stopping point.
+The artifact was at a clean stopping point — but a follow-up session
+added structural extensions (Step 6) below.
+
+---
+
+# Step 6 — Structural extensions (generations, quarks, gravity)
+
+**Final suite after Step 6: 148 passing tests (111 prior + 37 new across 4 modules).**
+
+This step adds *scaffolds* for the structural extensions deferred to
+the original "Future work" section. Each scaffold is **calibration,
+not prediction** — the Step 3 falsification is reaffirmed and
+strengthened by adding tools that explicitly do not produce the
+empirical mass tower.
+
+## Step 6a — Generations extended (`dinos.generations_extended`)
+
+Per-generation calibration interface + Foot 3-state postulate +
+Koide diagnostic.
+
+| Test | Result |
+|---|---|
+| `sigma_for_mass` round-trips for each lepton | ✓ |
+| Power-law `σ_g ∝ g^p` does not fit (residual 19%) | ✓ falsification record |
+| Exponential `σ_g ∝ exp(λg)` does not fit | ✓ falsification record |
+| Koide Q = 3/2 (within 0.1%) for empirical leptons | ✓ consistent (not derived) |
+| Foot 3-parameter postulate fits exactly (3 params, 3 masses) | ✓ exact-fit, not derivation |
+
+**10 tests passing.** Verdict: framework can *fit* lepton tower with 3
+free σ_l parameters or via Foot postulate; cannot *predict* it.
+
+## Step 6-cross — Cross-repo experiment (`dinos.cross_repo_experiments`)
+
+Tested two tools from related repos suggested as candidate
+generation-splitters:
+
+**A. Bronze-driven τ(t) Floquet shift** — driven by Aletheia's
+`BronzePendulum` (β₃ ≈ 3.303 metallic mean) at three head-phases
+spread by the golden angle. Result: all heads time-average to
+shift = -0.0405 with relative spread 2.7e-5. **NEGATIVE**:
+the time-average ⟨τ²⟩ = τ_0²·(1 + a²/2) is phase-independent;
+the Bronze pendulum is anti-resonant for stability, not
+generation-splitting.
+
+**B. Chiral Laplacian on 3-cycle** — Alembic's
+`w(i→j) = cos(β₃·Δθ) + χ·sin(β₃·Δθ)` (discrete Chern-Simons
+connection). Eigenvalue ratios on 3-node cycle: [0, 1, 3.29].
+Lepton targets (1, 207, 3477). log-residual = 29. **NEGATIVE**:
+the largest non-trivial eigenvalue ratio (≈ 3.29) is interestingly
+close to β₃ itself, but nowhere near the lepton hierarchy.
+
+**7 tests passing.** Both candidates falsified — confirming Step 3.
+The interesting side observation that the chiral Laplacian
+eigenvalue ratio ≈ Bronze ratio is documented but not load-bearing.
+
+## Step 6b — Quark sector scaffold (`dinos.quarks`)
+
+Generalised closure with fractional EM charges (q²·α replaces α) +
+SU(3) color Casimir scaffold + per-quark calibration.
+
+| Property | Result |
+|---|---|
+| Closure residue uses q² (sign-of-charge irrelevant) | ✓ |
+| Reduces to lepton form at q² = 1 | ✓ |
+| Round-trips: σ_q ↔ m_q for given (C_em, C_color, q) | ✓ |
+| All 6 quarks calibrate at C_color = 0 (closure admissible) | ✓ |
+| Full color Casimir scaffold (≈ 0.53) makes closure inadmissible | ✓ documented honestly |
+| log σ range across 6 quarks ≈ 33 (since m spans 5 orders) | ✓ |
+
+**11 tests passing.** Verdict: framework structurally accommodates
+fractional charges, but cannot incorporate the full color Casimir
+without breaking the closure positivity. Confinement is structurally
+beyond the bag construction. Per-quark σ is calibrated, not predicted.
+
+## Step 6c — Gravity backreaction (`dinos.gravity_backreaction`)
+
+Leading metric perturbation from the Higgs wall, computed via
+linearised Einstein equations.
+
+| Quantity | Value |
+|---|---|
+| Higgs energy density `ρ_H = (λ/4)·v⁴` | ~ 1.1×10⁻³ MeV⁴ |
+| Newtonian potential `Φ_N = (4π/3)·ρ·r²/M_Pl²` at electron Compton | ~ 10⁻⁴⁷ |
+| Critical radius for δg/g = 1 | ~ 10²² × Compton wavelength (astronomical) |
+
+**9 tests passing.** Verdict: gravitational backreaction at the
+electron Compton scale is **~10⁻⁴⁷** — fantastically below the
+mass-closure precision of 0.02%. The framework's use of a fixed
+Kerr-Newman background is *quantitatively justified*. This is a
+positive null result: gravity is consistently neglected, not
+arbitrarily.
+
+## Step 6 combined verdict
+
+| Module | Tests | Verdict |
+|---|---|---|
+| `generations_extended` | 10 | Calibration scaffold; Foot postulate fits but doesn't derive |
+| `cross_repo_experiments` | 7 | Both candidate generation-splitters cleanly falsified |
+| `quarks` | 11 | Fractional-charge closure; confinement structurally beyond |
+| `gravity_backreaction` | 9 | Backreaction ~10⁻⁴⁷ — safely neglected |
+
+The structural extensions add **infrastructure**, not predictions.
+They sharpen what the framework can and cannot do, and rule out two
+more candidate mechanisms for the lepton tower. The single-electron
+nature of the construction is reaffirmed.
+
+# Final shipping summary (revised)
+
+- **148 passing tests** across 11 modules.
+- **Five bridge claims verified** (Steps 1, 2, 4, 5, 5b).
+- **Two falsifications** (Step 3 + cross-repo experiment) that sharpen
+  the framework's reach.
+- **One consistent extension** (Step 5c moving peak).
+- **Three structural-extension scaffolds** (Step 6a–c) that document
+  what's possible and what's not within the construction.
+- **`cp.solve_cp_exact` docstring bug fixed.**
+
+The artifact is at a clean stopping point. Further work requires
+choosing a structural commitment (extra dimension, internal flavor
+space, etc.) that goes beyond the current construction.
