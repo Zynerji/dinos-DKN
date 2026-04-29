@@ -26,7 +26,7 @@ from . import (
     ckm_overlaps, pmns_overlaps, topological_seesaw,
     hhml_dkn_hybrid, lambda_attractor, varying_c_pruning,
     keldysh_fixedpoint, dm_scalar_channel, proton_stability,
-    gravity_with_confined_sources,
+    gravity_with_confined_sources, theorems_extension,
 )
 
 __version__ = "0.1.0"
@@ -53,4 +53,5 @@ __all__ = [
     "topological_seesaw", "hhml_dkn_hybrid", "lambda_attractor",
     "varying_c_pruning", "keldysh_fixedpoint", "dm_scalar_channel",
     "proton_stability", "gravity_with_confined_sources",
+    "theorems_extension",
 ]

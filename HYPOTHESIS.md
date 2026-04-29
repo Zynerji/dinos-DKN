@@ -1560,3 +1560,59 @@ concrete; they do not validate them. Anyone who wants to flesh out a
 specific direction (e.g. derive a wavefunction ansatz that gives CKM
 to 1%, or specify M_R from the framework) now has a starting point
 that is honest about what is open.
+
+---
+
+# Step 50 — Theorems extension (cj.txt + cj2.txt)
+
+Two analysis files were provided:
+- `cj.txt`: 4 theorems and 6 conjectures + research program
+- `cj2.txt`: 10 "ultimate breakthroughs" with the explicit recommendation
+  to test Conjecture 1 (SL(2,ℤ) monodromy traces) as highest-impact
+
+Tested in `dinos.theorems_extension`:
+
+| # | Theorem / Conjecture | Verdict | Quantitative |
+|---|----------------------|---------|--------------|
+| T2 (cj) | Z3 cover eigenvalues = 2 - 2cos(2π(n±1/3)/N) | **CONFIRMED** | max err = 4e-16 |
+| T1 (cj) | Mass ratios algebraic of degree ≤ 4 | CONDITIONAL | requires φ π-rational; lepton φ=2/9 fails |
+| C1 (cj2) | Metallic b = SL(2,ℤ) trace |Tr|/2 | PARTIAL | silver = √(8)/2 exact; others fail |
+| C2 (cj2) | a(b) = M_Pl·exp(-α/b) gap equation | **FALSIFIED** | R²(log a vs 1/b) = 0.005 |
+| C6 (cj2) | b > √2 ⇔ confinement | PARTIAL | 4/4 sign-correct but neutrinos<√2 too |
+
+Notable findings:
+
+**T2 CONFIRMED.** This is a real theorem now. The Z₃-monodromy Möbius
+cover Laplacian has eigenvalues exactly given by the union of two
+shifted bands `2 - 2cos(2π(n + 1/3)/N)` and `2 - 2cos(2π(n - 1/3)/N)`.
+Verified to machine precision at N=32.
+
+**C1 PARTIAL.** The lepton b = √2 is exactly |Tr(M)|/2 for the
+silver-eigenvalue SL(2,ℝ) hyperbolic generator (n=2). But this
+recipe doesn't extend to the smaller atlas b values (vector mesons
+b≈0.09, B mesons b≈0.06, etc.). The conjecture as stated needs
+refinement — perhaps including non-hyperbolic generators or a
+different trace identity.
+
+**C2 FALSIFIED.** The proposed universal mass gap equation
+a(b) = M_Pl·exp(-α/b) does not fit the data. R² of log(a) against
+1/b is 0.005 — essentially zero correlation. The mass scale a is
+trivially close to the family mean ⟨m⟩, not a function of b.
+
+**C6 PARTIAL.** b > √2 correlates with the sign-flip Foot branch
+(Step 36), which IS occupied by quarks. But neutrinos also live in
+the sign-flip branch (b ≈ 0.97, but with maximal flip in their natural
+ordering) and are NOT confined. The √2 threshold separates branches,
+not free vs confined fermions.
+
+**T1 CONDITIONAL.** Mass ratios are algebraic only when φ is π-rational.
+For the lepton case φ = 2/9 (rational, not π-rational), cos(2/9) is
+transcendental by Lindemann-Weierstrass, so the mass ratios are
+transcendental. The theorem should be restated.
+
+This brings the framework's verified theorems to:
+- Foot+Koide closure (Step 8)
+- Z₃ monodromy cover (Step 9b)
+- Z₃ cover eigenvalue formula (Step 50, T2 — NEW)
+
+433 tests pass.
