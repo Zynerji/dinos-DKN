@@ -1031,3 +1031,95 @@ Files added in Step 9:
 - Lepton tower derivation status: **4/5 components derived** (b, a, m_τ, branch selection); φ remains the lone undetermined.
 - The Foot Z_3 postulate is now *grounded in geometry* via the Z_3 Möbius cover — the structural part is no longer imported.
 - The path to closing the last 1/5 (φ) is mapped: investigate φ ≈ Cabibbo angle relationship, or look for a geometric phase invariant of the Z_3 cover that pins φ from first principles.
+
+---
+
+# Step 10 — Quark falsification + φ ≈ 2/9 observation
+
+**Final suite after Step 10: 211 passing tests (197 prior + 14 new).**
+
+## Step 10a — Quark Foot+Koide test (`dinos.quarks_foot_test`)
+
+**Question:** does the lepton Foot+Koide derivation extend to quarks?
+
+| Sector | Koide Q | Implied b = √(6/Q − 2) |
+|---|---|---|
+| Charged leptons (e, μ, τ) | 1.500 | √2 = 1.414 |
+| Up-type (u, c, t) | 1.178 | 1.759 |
+| Down-type (d, s, b) | 1.367 | 1.545 |
+| Pair sums (m_u+m_d, etc.) | 1.188 | — |
+| Geometric means | 1.248 | — |
+
+**Verdict (clean falsification):** quarks do NOT satisfy the lepton
+Koide formula. Each sector has its own b value; the
+lepton-derived b = √2 is not universal across fermion families. A
+unified mass formula across leptons and quarks would require
+additional structural input (running corrections, CKM mixing, etc.).
+
+**7 tests passing.**
+
+## Step 10b — Holonomy candidates for φ (`dinos.holonomy_phi`)
+
+**Question:** can natural angles from Z_2 × Z_3 holonomy or simple
+fractions match the empirical Foot mixing angle
+φ_lepton = 0.222270 rad?
+
+Top candidates:
+
+| Candidate | Value (rad) | |Δ| vs φ |
+|---|---|---|
+| **2/9** | **0.22222** | **4.8 × 10⁻⁵** |
+| (Cabibbo − α/√2) | 0.22243 | 1.6 × 10⁻⁴ |
+| π/14 | 0.22440 | 2.1 × 10⁻³ |
+| Cabibbo θ_C | 0.22759 | 5.3 × 10⁻³ |
+| α_EM | 0.00730 | 0.215 |
+
+**Striking observation:** φ_lepton ≈ **2/9 rad** to within
+4.8 × 10⁻⁵ rad (0.022%) — two orders of magnitude closer than the
+Cabibbo angle. Empirical mass uncertainties give φ to ~7 × 10⁻⁵ rad
+precision, placing 2/9 just outside experimental noise. Whether
+φ = 2/9 exactly is fundamental or a numerical coincidence is **the
+sharpest open question** raised by this work.
+
+If φ = 2/9 IS the true value, the small deviation might come from
+running-mass corrections to (m_e, m_μ, m_τ) at a particular scale.
+
+**7 tests passing.**
+
+## Step 10 combined verdict
+
+- **Quark universality of the lepton template: falsified.** Sectoral b
+  values differ from √2.
+- **φ ≈ 2/9 observation: documented.** Closest simple-fraction
+  candidate; tantalising but not derived. The Cabibbo angle is only
+  the third-best fit, suggesting any deep quark-lepton link is
+  more subtle than direct equality.
+
+Files added in Step 10:
+- `src/dinos/quarks_foot_test.py` — quark Koide + sectoral b (7 tests)
+- `src/dinos/holonomy_phi.py` — φ candidate scoring + 2/9 finding (7 tests)
+
+---
+
+# Whitepaper updated
+
+The 13-page LaTeX whitepaper (`paper/quantum_bridge.pdf`) has been
+fully rewritten to incorporate Steps 6–10. New sections:
+- §6 Structural extensions (scaffolds + falsifications)
+- §7 Metallic-ratio sweep, Pareto ratchet
+- §8 Foot+Koide near-derivation (4/5 components, with the Z3-proven
+  branch table and predicted m_τ)
+- §9 SAT/SMT formalisation + Z_3 M\"obius cover
+- §10 Quark sector falsification, φ ≈ 2/9 observation
+
+References added: Foot (1994), Koide (1981/1983), de Moura+Bj\"orner
+(Z3 2008).
+
+Final-final-final-final-final shipping summary:
+- **211 passing tests** across 18 modules.
+- **Lepton tower 4/5 derived**; φ remains the open question with the
+  2/9 candidate flagged for future investigation.
+- **Two clean falsifications** (Step 3 and Step 10a) marking the
+  framework's boundaries.
+- **Z_3 Möbius cover** geometrically grounds the Foot Z_3 postulate.
+- 13-page whitepaper PDF documents the full programme.
