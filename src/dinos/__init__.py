@@ -17,6 +17,7 @@ from . import (
     foot_systematic_scan, metallic_invariant_sweep, foot_resonance_atlas,
     foot_mass_predictions, heavy_quark_resonances, foot_meta_pattern,
     foot_robustness, foot_phi_spectroscopy, foot_duality,
+    foot_canonical_atlas,
 )
 
 __version__ = "0.1.0"
@@ -33,5 +34,5 @@ __all__ = [
     "branch_taxonomy", "foot_systematic_scan", "metallic_invariant_sweep",
     "foot_resonance_atlas", "foot_mass_predictions", "heavy_quark_resonances",
     "foot_meta_pattern", "foot_robustness", "foot_phi_spectroscopy",
-    "foot_duality",
+    "foot_duality", "foot_canonical_atlas",
 ]
