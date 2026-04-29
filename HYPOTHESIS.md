@@ -1616,3 +1616,71 @@ This brings the framework's verified theorems to:
 - Z₃ cover eigenvalue formula (Step 50, T2 — NEW)
 
 433 tests pass.
+
+---
+
+# Step 51 — Algorithm atlas (ch.txt 20-algorithm proposal)
+
+A 526-line ch.txt analysis file proposed "20 novel mathematical
+algorithms from the DKN framework." Walking through each:
+
+| # | Algorithm | Status |
+|---|-----------|--------|
+| 1 | Möbius-Laplacian Spectral Sieve | VERIFIED (Step 2) |
+| 2 | Z_n-Cover Ladder Generator | VERIFIED (Step 50, T2) |
+| 3 | Spin-Connection Shift Operator | VERIFIED (Step 4) |
+| 4 | Chandrasekhar-Page Kernel Extractor | VERIFIED (Step 5b) |
+| 5 | Metallic Trace Classifier | SCAFFOLD |
+| 6 | Monodromy Group Generator | SCAFFOLD (PARTIAL match) |
+| 7 | Foot Triple Completion | VERIFIED (Step 17, Higgs prediction) |
+| 8 | Koide Saturation Detector | VERIFIED (Step 14, 36) |
+| 9 | Schwinger-Keldysh Saddle Finder | VERIFIED (Step 1) |
+| 10 | Metallic Pareto Ratchet | VERIFIED (Step 7b) |
+| 11 | Bronze Pendulum Resonance Finder | VERIFIED (Step 6-cross) |
+| 12 | Continued Fraction Signature Detector | VERIFIED (Step 11) |
+| 13 | Metallic Lattice Enumerator | VERIFIED (Step 15) |
+| 14 | φ-Quantization Rule Engine | VERIFIED (Step 23-24) |
+| 15 | Metallic RG Flow Integrator | **NEW** (this step) |
+| 16 | Seesaw Scale Extractor | SCAFFOLD (Step 43) |
+| 17 | Confinement Diagnostic | SCAFFOLD (Step 50) |
+| 18 | CKM Matrix Constructor | SCAFFOLD (Step 42) |
+| 19 | Modular Form Mass Spectrum Generator | **NEW** (this step) |
+| 20 | AdS₃/CFT₂ Dictionary Constructor | SPECULATIVE |
+
+### New modules added at this step
+
+- `dinos.algorithms_atlas`: single-stop catalog (above table)
+- `dinos.metallic_rg_flow`: Algorithm #15 — RK4 integrator for the
+  conjectured β(b) = b(1-b²)(b²-φ⁻²)(b²-φ²) with fixed-point detection.
+  HONEST: the β-function form is conjectural; no derivation in the framework.
+- `dinos.modular_form_spectrum`: Algorithm #19 — toy q-expansion
+  coefficient recursion. HONEST: not a true modular form; just a parameterised tower.
+- `dinos.monodromy_word_search`: extended Algorithm #6 — generates
+  SL(2,ℤ) words up to length L, computes |Tr|/2, matches atlas.
+  HONEST: confirms PARTIAL verdict from Step 50 — silver hyperbolic
+  gives lepton b exactly, but other atlas b's are too small to match
+  the (M + 1/M)/2 form (which is bounded below by 1).
+
+### Honest takeaway
+
+Of the "20 novel algorithms":
+- 8 already existed as VERIFIED implementations (Steps 1-38)
+- 6 were SCAFFOLDS from Steps 39-50 with honest open caveats
+- 4 are NEW with this step (#5, #15, #19, plus extended #6) but each
+  comes with explicit caveats about what is and is not derived
+- 2 (#20 AdS_3/CFT_2 dictionary, plus parts of #19) remain SPECULATIVE
+  because the framework does not contain the bulk geometry needed
+
+The framing "20 NOVEL algorithms that solve fundamental bottlenecks
+across physics, computer science, and pure mathematics" overstates
+what's new. About 80% of the catalog is repackaging of existing work
+with new names.
+
+What survives as a genuinely new contribution from this round of
+ch.txt-driven implementation:
+- Catalog/indexing of the algorithm coverage
+- RG-flow toy integrator for the conjectured β(b)
+- Modular q-expansion toy
+- Extended SL(2,ℤ) word search confirming PARTIAL verdict on cj2 #1
+
+Total tests: 445 passing.
