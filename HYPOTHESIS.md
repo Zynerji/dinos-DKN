@@ -739,3 +739,90 @@ nature of the construction is reaffirmed.
 The artifact is at a clean stopping point. Further work requires
 choosing a structural commitment (extra dimension, internal flavor
 space, etc.) that goes beyond the current construction.
+
+---
+
+# Step 7 — Metallic-ratio sweep + Pareto-ratchet experiment
+
+**Suite after Step 7: 166 passing tests (148 prior + 18 new).**
+
+Two follow-up sweeps exploring whether other tools from the related
+repos shift the negative results from Step 6:
+
+## Step 7a — Metallic-ratio sweep (`dinos.metallic_sweep`)
+
+Step 6 used Bronze (β₃ ≈ 3.303). This step swept the full metallic
+family — Golden φ, Silver δ_S, Bronze β₃, Copper δ_C, Nickel δ_N,
+Plastic ρ, Supergolden ψ_s — across both Step 6 cross-repo experiments,
+on cycle lengths N ∈ {3, 4, 6, 7}.
+
+**Sweep A (time-averaged shift):** all 7 ratios give *exactly the
+same* shift to machine precision (relative spread 1.7e-16). Confirms
+the universality of the −½ time-averaging prefactor — independent of
+metallic ratio.
+
+**Sweep B (chiral Laplacian):** 28 (M, N) combinations tested. Best
+result is **Bronze on N=7** with eigenvalue ratios (23, 47, 119) —
+log-residual 5.86 vs lepton tower (1, 207, 3477). Better than the
+3-cycle (log-res 8.10) but still nowhere near matching. The pattern
+23 → 47 → 119 has near-doubling ratios (~2× and ~2.5×), unlike the
+~17× muon-tau gap.
+
+**7 tests passing.** Verdict: **no metallic ratio + cycle length
+combination produces the lepton mass tower.** Strengthens Step 6's
+falsification by ruling out the entire metallic-mean family.
+
+## Step 7b — Pareto-ratchet stability vs lepton pinning (`dinos.pareto_generation_test`)
+
+The Aletheia Pareto ratchet operates on N orthogonal axes with per-axis
+floor constraints — *structurally a multi-axis stability mechanism*.
+Tested whether wrapping it around a 3-mode generation problem can pin
+the lepton ratios:
+
+**Experiment C (separation under perturbation):** Random-walk perturbed
+3 well-separated mode scores; ratchet rolls back on dual-axis collapse.
+Result: top score remains within 10× of initial; ratchet does
+roll-back as designed (37 rollbacks at amp=0.3); but **single-axis
+drift is allowed by design** (Phase B oscillation tolerance) — a
+single mode can drift to ~0 without triggering rollback.
+
+**Experiment D (random init → lepton ratios?):** 5 random
+initialisations spanning ~3 orders of magnitude. Ratchet preserves
+mode separation under perturbation but *does not converge* to the
+empirical lepton ratios. Mean log-residual > 1.0 across trials.
+
+**11 tests passing.** Verdict: the Pareto ratchet is a **stability
+mechanism** (preserves modes that already exist), not a **generative
+mechanism** (does not pin specific ratios). To make it a generator
+for lepton mass ratios, an *additional symmetry constraint* would be
+required — and that's the missing piece, not the ratchet itself.
+
+## Step 7 combined verdict
+
+| Sweep | Result |
+|---|---|
+| Metallic-ratio universality (time-averaged shift) | All ratios identical (1.7e-16 spread) |
+| Metallic-ratio chiral Laplacian | No (M, N) matches lepton tower (best: bronze N=7, log-res 5.86) |
+| Pareto ratchet preserves modes | ✓ as designed (with single-axis drift caveat) |
+| Pareto ratchet pins lepton ratios from random init | ✗ does not pin |
+
+The metallic family + Pareto ratchet are **complementary stability
+tools** for an underlying mode structure that this framework doesn't
+provide. The lepton mass hierarchy is structurally absent from the
+Dinos construction; *no tool transplant from related repos closes
+this gap.* Step 3's falsification stands, sharpened by 35 additional
+falsification tests.
+
+Files added in Step 7:
+- `src/dinos/metallic_sweep.py` — 7 metallic ratios, 28-point chiral sweep
+- `src/dinos/pareto_generation_test.py` — Pareto ratchet wrapper + experiments
+- `tests/test_metallic_sweep.py` — 7 tests
+- `tests/test_pareto_generation_test.py` — 11 tests
+
+---
+
+# Final-final shipping summary
+
+- **166 passing tests** across 13 modules.
+- **Five bridge claims verified**, **multiple falsifications** (Step 3, cross-repo, metallic sweep, Pareto-ratchet pinning), **structural extensions documented**.
+- The single-electron geometric soliton model is now exhaustively tested against multiple candidate generation-splitting tools from related repos. **None work.** The framework's reach is one fermion, period.

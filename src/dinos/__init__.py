@@ -9,7 +9,7 @@ from . import (
     constants, closure, dm, geodesic, cp, casimir, verify,
     coords, temporal_loop, quantum_temporal_loop, qft, spectrum, generations,
     polar_strip, kerr_corrections, generations_extended, cross_repo_experiments,
-    quarks, gravity_backreaction,
+    quarks, gravity_backreaction, metallic_sweep, pareto_generation_test,
 )
 
 __version__ = "0.1.0"
@@ -18,5 +18,5 @@ __all__ = [
     "coords", "temporal_loop", "quantum_temporal_loop", "qft", "spectrum",
     "generations", "polar_strip", "kerr_corrections",
     "generations_extended", "cross_repo_experiments", "quarks",
-    "gravity_backreaction",
+    "gravity_backreaction", "metallic_sweep", "pareto_generation_test",
 ]
