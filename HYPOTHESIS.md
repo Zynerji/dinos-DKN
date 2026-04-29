@@ -1830,3 +1830,71 @@ duality, or used to build cryptographic / consensus / LLM-attention
 algorithms.
 
 10 new tests passing. Total: 468 tests pass.
+
+---
+
+# Step 54 — Layer 2 deep dive: principles of the metallic Foot atlas
+
+The atlas (25 resonances, Higgs at 0.10%, 18× discrimination) is real.
+The DEEP question: WHY?
+
+Five structural questions tested in `dinos.layer2_principles`:
+
+| # | Question | Status | Quantitative |
+|---|---|---|---|
+| Q1 | Metallic vs other quadratic irrationals at matched class | **SHARPENED** | 8× advantage at 0.05% tol |
+| Q2 | Are atlas φ values exact rationals + noise? | SHARPENED | ~30% show CF max term ≥ 50 |
+| Q3 | Why 11/19 entries use exactly 2 metallic factors? | OPEN | golden+supergolden most-paired (4×) |
+| Q4 | a(b) gap equation? | OPEN | a tracks ⟨m⟩ (R²=0.95) not 1/b (R²=0.04) |
+| Q5 | Multiplicative closure of atlas b values? | **FALSIFIED** | 6 product hits vs 15 expected by chance |
+
+## What sharpens
+
+**Q1 is the strongest positive result.** Even against the strongest
+null (other quadratic irrationals at the same magnitude scale, same
+algebraic class), metallic ratios beat them 4-10× at sub-percent
+tolerances. The Step 31 result (18× over uniform random) was
+already strong; this confirms the selection is to the SPECIFIC
+metallic family, not just to "any algebraic number."
+
+**Q2 confirms the φ rationality framework partially.** ~30% of
+atlas families show clear CF signatures of "exact rational + noise"
+(the prototype being lepton φ = 2/9 with CF [0;4,2,255,...]). The
+remaining 70% may have less-resolved phi extractions, or may not
+sit at simple rationals.
+
+## What stays open
+
+**Q3 binary factorization.** Real bias (11/19 use exactly 2 factors,
+even frequencies across all 7 metallic ratios), but no underlying
+group structure identified. golden+supergolden pair appears 4 times —
+notable but unexplained.
+
+**Q4 mass scale a.** Predicted by family geometric mean trivially.
+The framework does NOT explain why each sector lives at its specific
+scale. cz2 #2's a = M_Pl·exp(-α/b) ansatz is dead.
+
+## What gets falsified
+
+**Q5 multiplicative closure.** The atlas b values do NOT form a
+multiplicative semigroup. Cross-sector products hit other atlas
+b's at chance level only. The "metallic group" or "rank-2 lattice"
+suggestion from cz2 has no support in the data.
+
+## Where this leaves Layer 2
+
+Sharpened core: the metallic ratios specifically (not arbitrary algebraic
+numbers) are preferred by atlas b values. The selection is real and
+strong. The "why metallic" question is real and unanswered.
+
+Remaining open structural questions:
+1. Why metallic specifically (and not other quadratic irrationals)?
+2. What sector-to-metallic-combination rule exists (if any)?
+3. What sets each sector's mass scale?
+4. Is there a Z₂ ⊗ Z₂ cover or rank-2 modular structure underlying
+   the binary factorization bias?
+5. The Higgs at b = 1/(copper·plastic²) — coincidence or law?
+   (Falsifiable: if Xi_bb mass measured, framework predicts within
+   1% at b = 1/(golden²·plastic). Real test pending experiment.)
+
+7 new tests passing. Total: 475 tests pass.

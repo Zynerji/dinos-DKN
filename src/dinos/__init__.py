@@ -29,7 +29,7 @@ from . import (
     gravity_with_confined_sources, theorems_extension,
     algorithms_atlas, metallic_rg_flow, modular_form_spectrum,
     monodromy_word_search, cz_claims_validation,
-    monodromy_hecke_test, ee_ej_validation,
+    monodromy_hecke_test, ee_ej_validation, layer2_principles,
 )
 
 __version__ = "0.1.0"
@@ -60,5 +60,5 @@ __all__ = [
     "algorithms_atlas", "metallic_rg_flow",
     "modular_form_spectrum", "monodromy_word_search",
     "cz_claims_validation",
-    "monodromy_hecke_test", "ee_ej_validation",
+    "monodromy_hecke_test", "ee_ej_validation", "layer2_principles",
 ]
